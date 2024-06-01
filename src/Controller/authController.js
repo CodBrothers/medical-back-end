@@ -1,9 +1,9 @@
 const authService = require('../Services/login');
 
 const login = (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  const user = authService.authenticateUser(username, password);
+  const user = authService.authenticateUser(email, password);
   if (!user) {
     return res.status(401).json({ message: 'Invalid username or password' });
   }
@@ -12,4 +12,16 @@ const login = (req, res) => {
   res.json({ token });
 };
 
-module.exports = { login };
+const addUserData = (req, res) => {
+  const data = req.body;
+
+  const user = authService.addUserData(data);
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid Data' });
+  }
+
+  // const token = authService.generateToken(user);
+  // res.json({ token });
+};
+
+module.exports = { login, addUserData };
