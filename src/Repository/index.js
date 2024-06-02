@@ -5,16 +5,13 @@ const users = [
     { id: 2, username: 'user2', password: 'password2' }
   ];
   
-  const findUserByUsername = async(email) => {
-    const respData = await userModel.find({email: email});
-    console.log(respData);
+  const findUserByUsername = async(email, password) => {
+    const respData = await userModel.findOne({email: email, password: password});
     return respData;
   };
 
   const addUserByUsername = async(data) => {
-    const respData = await userModel.create(data);
-    console.log(respData);
-    return respData;
+    return await userModel.create(data);
   };
   
   module.exports = { findUserByUsername, addUserByUsername };
