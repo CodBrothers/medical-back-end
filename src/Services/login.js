@@ -11,7 +11,6 @@ const authenticateUser = async(email, password) => {
     const token = generateToken(user);
     return { user, token };
   }
-  return null;
 };
 
 const registerUser = async (userData) => {
