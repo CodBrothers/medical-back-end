@@ -2,9 +2,10 @@ const express = require('express');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const authRoutes = require('./src/Routes/authRoutes');
+const appRoutes = require('./src/Routes/docPat-route');
 const cors = require('cors');
 const connectDB = require('./dbConnection');
-
+const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -16,9 +17,11 @@ connectDB();
 
 // Use CORS middleware
 app.use(cors());
+app.use(helmet());
 
 // Use auth routes
 app.use('/auth', authRoutes);
+app.use('/docpat', appRoutes)
 
 // Example route to ensure the server is working
 app.get('/', (req, res) => {
