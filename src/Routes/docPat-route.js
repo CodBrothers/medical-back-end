@@ -6,5 +6,5 @@ const router = express.Router();
 
 router.post('/save-doc-pat-data', docPatController.addUseradditionalData);
 router.post('/update-user-data', docPatController.updateUserData);
-
+router.post('/fetch-user-data', docPatController.fetchUserData)
 module.exports = router;
