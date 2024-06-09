@@ -6,9 +6,14 @@ const addUserAdditionalData = async(data) => {
   };
 
 const updateUserAdditionalData = async(data) => {
-      return await docPatModel.updateOne({ Adhar: data.Adhar },{  $set: data });
+      return await docPatModel.updateOne({ _id: data._id, role: data.role },{  $set: data });
+};
+const fetchUserData = async(data) => {
+  const respData = await docPatModel.findOne({_id: data._id, role: data.role});
+  return respData;
 };
 module.exports = {
   addUserAdditionalData,
   updateUserAdditionalData,
+  fetchUserData,
 }
