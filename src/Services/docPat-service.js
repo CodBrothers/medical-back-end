@@ -7,10 +7,10 @@ const addUserAdditionalData = async (userData) => {
 
   const updateUserData = async(data) => {
     const updateUser = await userRepository.updateUserAdditionalData(data)
-    if(!updateUser){
+    if(!updateUser.modifiedCount >= 0){
       return "No Data Updated";
     }
-    return updateUser;
+    return "User Data Updated";
   }
 
   const fetchUserData = async(data) => {
