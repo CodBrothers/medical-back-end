@@ -20,8 +20,17 @@ const addUserAdditionalData = async (userData) => {
     }
     return fetchData;
   }
+
+  const getRoleBasedData = async(data) => {
+    const fetchData = await userRepository.getRoleBasedData(data);
+    if(!fetchData){
+      return "No Data Found";
+    }
+    return fetchData;
+}
   module.exports = {
     addUserAdditionalData,
     updateUserData,
-    fetchUserData
+    fetchUserData,
+    getRoleBasedData
   }

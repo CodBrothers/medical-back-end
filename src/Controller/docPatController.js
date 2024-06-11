@@ -42,13 +42,28 @@ const fetchUserData = async (req, res) => {
   res.locals.error = error;
   res.locals.errorCode = error(data);
   res.locals.data = user;
-  responseHandler.jsonSuccessr.statusCode || 500;
   res.locals.message = error.message || 'Internal server error';
   responseHandler.jsonError(req, res);
 }
 };
+
+const getRoleBasedData = async (req,res) => {
+  try{
+    const data = req.body;
+    const user = await appService.getRoleBasedData(data);
+    res.locals.data = user;
+    responseHandler.jsonSuccess(req, res);
+  } catch (error) {
+      res.locals.error = error;
+      res.locals.errorCode = error(data);
+      res.locals.data = user;
+      res.locals.message = error.message || 'Internal Server Error';
+      responseHandler.jsonError(req, res);
+  }
+}
   module.exports ={ 
     addUseradditionalData,
     updateUserData,
-    fetchUserData
+    fetchUserData,
+    getRoleBasedData
   }

@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const  DocPatSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    age: { type: Date, required: true },
-    address: { type: String, required: true },
-    adhar: {type: String, required: true},
-    phoneNumber: {type:Number, required: true},
-    role: {type:String, required:true },
-    days: {type:String, required:true },
-    qualification: {type:String, required:true },
-    availability: {type:String, reuired:true },
+    name: { type: String},
+    age: { type: Date  },
+    address: { type: String },
+    adhar: {type: String},
+    phoneNumber: {type:Number },
+    role: {type:String, required:true, enum: ['doctor', 'patient'] },
+    days: {type:String  },
+    qualification: {type:String },
+    availability: {type:String },
   });
   
   const docPat = mongoose.model('Doc-pat',DocPatSchema);

@@ -12,8 +12,14 @@ const fetchUserData = async(data) => {
   const respData = await docPatModel.findOne({_id: data._id, role: data.role});
   return respData;
 };
+
+const getRoleBasedData = async(data) =>{
+  const respData = await docPatModel.findOne({role: data.role});
+  return respData;
+}
 module.exports = {
   addUserAdditionalData,
   updateUserAdditionalData,
   fetchUserData,
+  getRoleBasedData,
 }
