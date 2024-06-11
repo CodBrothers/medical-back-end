@@ -7,7 +7,7 @@ const  DocPatSchema = new mongoose.Schema({
     adhar: {type: String},
     phoneNumber: {type:Number },
     role: {type:String, required:true, enum: ['doctor', 'patient'] },
-    days: {type:String  },
+    days: {type:String },
     qualification: {type:String },
     availability: {type:String },
   });

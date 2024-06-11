@@ -9,12 +9,12 @@ const updateUserAdditionalData = async(data) => {
       return await docPatModel.updateOne({ _id: data._id, role: data.role },{  $set: data });
 };
 const fetchUserData = async(data) => {
-  const respData = await docPatModel.findOne({_id: data._id, role: data.role});
+  const respData = await docPatModel.find({_id: data._id, role: data.role});
   return respData;
 };
 
 const getRoleBasedData = async(data) =>{
-  const respData = await docPatModel.findOne({role: data.role});
+  const respData = await docPatModel.find({role: data.role});
   return respData;
 }
 module.exports = {
