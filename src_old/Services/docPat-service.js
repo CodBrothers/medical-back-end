@@ -28,27 +28,9 @@ const addUserAdditionalData = async (userData) => {
     }
     return fetchData;
 }
-
-const deleteRoleBasedData = async(data) => {
-const deletedata = await userRepository.deleteRoleBasedData(data);
-if(deletedata.deletedCount > 0){
-  return "User Data Deleted";
-}
-  return "No Data deleted";
-}
-
-const getDataById = async(data) => {
-  const getData = await userRepository.getDataById(data);
-  if(!getData){
-    return "No Data Found";
-  }
-  return getData;
-}
   module.exports = {
     addUserAdditionalData,
     updateUserData,
     fetchUserData,
-    getRoleBasedData,
-    deleteRoleBasedData,
-    getDataById
+    getRoleBasedData
   }

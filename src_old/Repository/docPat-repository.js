@@ -17,25 +17,9 @@ const getRoleBasedData = async(data) =>{
   const respData = await docPatModel.find({role: data.role});
   return respData;
 }
-
-const deleteRoleBasedData =  async(data) =>{
-  const deleteData = await docPatModel.deleteOne({_id: new mongoose.Types.ObjectId(data._id) });
-  return deleteData; 
-}
-
-const getDataById = async(data) => {
-  return docPatModel.findOne({_id: data._id});
-}
-
-const getPatientData = async(data) => {
-  return docPatModel.find(data);
-}
 module.exports = {
   addUserAdditionalData,
   updateUserAdditionalData,
   fetchUserData,
   getRoleBasedData,
-  deleteRoleBasedData,
-  getDataById,
-  getPatientData,
 }

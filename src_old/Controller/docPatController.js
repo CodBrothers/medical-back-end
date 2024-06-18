@@ -57,39 +57,9 @@ const getRoleBasedData = async (req,res) => {
     responseHandler.jsonError(req, res);
   }
 }
-
-const deleteRoleBasedData = async (req,res) => {
-  try{
-    const data = req.body;
-    const user = await appService.deleteRoleBasedData(data);
-    res.locals.data = user;
-    responseHandler.jsonSuccess(req, res);
-  } catch (error) {
-    res.locals.error = error;
-    res.locals.errorCode = error.statusCode || 500;
-    res.locals.message = error.message || 'Internal server error';
-    responseHandler.jsonError(req, res);
-  }
-}
-
-const getDataById = async(req, res) => {
-  try{
-    const data = req.body;
-    const user = await appService.getDataById(data);
-    res.locals.data = user;
-    responseHandler.jsonSuccess(req, res);
-  } catch (error) {
-    res.locals.error = error;
-    res.locals.errorCode = error.statusCode || 500;
-    res.locals.message = error.message || 'Internal server error';
-    responseHandler.jsonError(req, res);
-  }
-}
   module.exports ={ 
     addUseradditionalData,
     updateUserData,
     fetchUserData,
-    getRoleBasedData,
-    deleteRoleBasedData,
-    getDataById
+    getRoleBasedData
   }
