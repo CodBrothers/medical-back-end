@@ -1,11 +1,14 @@
+const { required } = require('joi');
 const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema({
-    time: { type: Date, required: true },
-    status: { type: String, enum: ['confirmed', 'pending', 'canceled'], required: true },
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    disease_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Disease', required: true },
-    doctor_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+    userId: {  type: mongoose.Schema.Types.ObjectId, ref: 'Doc-pat', required: true },
+    doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doc-pat', required: true },
+    appointmentTime: { type:String },
+    status: {
+      type: String,
+      default: 'pending',
+    },
   });
   
   const Appointment = mongoose.model('Appointment', appointmentSchema);
