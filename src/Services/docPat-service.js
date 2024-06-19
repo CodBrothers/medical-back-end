@@ -7,26 +7,26 @@ const addUserAdditionalData = async (userData) => {
 
   const updateUserData = async(data) => {
     const updateUser = await userRepository.updateUserAdditionalData(data)
-    if(!updateUser.modifiedCount >= 0){
-      return "No Data Updated";
+    if(updateUser.modifiedCount > 0){
+      return "User Data Updated";
     }
-    return "User Data Updated";
+    return "No Data Updated";
   }
 
   const fetchUserData = async(data) => {
     const fetchData = await userRepository.fetchUserData(data);
-    if(!fetchData){
-      return "No Data Found";
+    if(fetchData.length > 0){
+      return  fetchData;
     }
-    return fetchData;
+    return "No Data Found";
   }
 
   const getRoleBasedData = async(data) => {
     const fetchData = await userRepository.getRoleBasedData(data);
-    if(!fetchData){
-      return "No Data Found";
+    if(fetchData.length > 0){
+      return fetchData;
     }
-    return fetchData;
+    return "No Data Found";
 }
 
 const deleteRoleBasedData = async(data) => {
