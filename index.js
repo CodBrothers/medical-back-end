@@ -3,6 +3,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const authRoutes = require('./src/Routes/authRoutes');
 const appRoutes = require('./src/Routes/docPat-route');
+const appointRoutes = require('./src/Routes/appointment');
 const cors = require('cors');
 const connectDB = require('./dbConnection');
 const helmet = require('helmet');
@@ -21,7 +22,9 @@ app.use(helmet());
 
 // Use auth routes
 app.use('/auth', authRoutes);
-app.use('/docpat', appRoutes)
+app.use('/docpat', appRoutes);
+app.use('/appoint', appointRoutes);
+
 
 // Example route to ensure the server is working
 app.get('/', (req, res) => {
