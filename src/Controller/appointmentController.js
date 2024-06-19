@@ -66,7 +66,6 @@ const deleteById = async(req, res) => {
   }
 }
   module.exports = {
-    sendReminder,
     createNewUser,
     fetchUserById,
     fetchAllData,
